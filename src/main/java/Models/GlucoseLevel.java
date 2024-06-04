@@ -1,12 +1,29 @@
 package Models;
-
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+
+
+
+@Entity
+@Table(name = "glucose_level")
 public class GlucoseLevel {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "g_id")
     private Integer gId;
+
+    @Column(name = "date_time")
     private LocalDateTime dateTime;
+
+    @Column(name = "glucose_level")
     private Double glucoseLevel;
+
+    @ManyToOne
+    @Column(name = "p_id")
     private Patient patient;
+
 
     public GlucoseLevel() {
     }
@@ -48,5 +65,15 @@ public class GlucoseLevel {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
+    }
+
+    @Override
+    public String toString() {
+        return "GlucoseLevel{" +
+                "gId=" + gId +
+                ", dateTime=" + dateTime +
+                ", glucoseLevel=" + glucoseLevel +
+                ", patient=" + patient +
+                '}';
     }
 }
