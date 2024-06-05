@@ -1,5 +1,4 @@
 package com.Config;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
@@ -11,20 +10,20 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
 import javax.sql.DataSource;
 import java.util.Properties;
 
+
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com")
+@EnableJpaRepositories(basePackages = "com.repository")
 public class PersistenceJPAConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("model");
+        em.setPackagesToScan("com.Models");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
@@ -37,8 +36,8 @@ public class PersistenceJPAConfig {
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3308/diabetes_tracker?createDatabaseIfNotExist=true");
-        dataSource.setUsername( "Bahy Imane" );
+        dataSource.setUrl("jdbc:mysql://localhost:3308/diabetes?createDatabaseIfNotExist=true");
+        dataSource.setUsername( "root" );
         dataSource.setPassword( "" );
         return dataSource;
     }

@@ -1,5 +1,7 @@
-package Models;
+package com.Models;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -25,6 +27,9 @@ public class Patient {
 
     @Column(name = "address")
     private String address;
+
+    @OneToMany(mappedBy = "patient")
+    private List<GlucoseLevel> glucoseLevels = new ArrayList<>();
 
     public Patient() {
     }

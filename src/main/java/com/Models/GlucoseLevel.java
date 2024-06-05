@@ -1,4 +1,4 @@
-package Models;
+package com.Models;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -21,7 +21,6 @@ public class GlucoseLevel {
     private Double glucoseLevel;
 
     @ManyToOne
-    @Column(name = "p_id")
     private Patient patient;
 
 

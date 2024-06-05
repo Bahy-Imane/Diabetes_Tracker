@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app>
+<web-app >
 
   <display-name>Spring MVC Application</display-name>
 
@@ -9,7 +9,7 @@
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>/WEB-INF/HelloWeb-servlet.xml</param-value>
+      <param-value>/WEB-INF/config-servlet.xml</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
