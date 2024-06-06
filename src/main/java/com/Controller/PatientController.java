@@ -16,11 +16,15 @@ public class PatientController {
     @Autowired
     private PatientService patientService;
 
-
     @RequestMapping("/")
+    public String welcomehome(){
+        return "homePage";
+    }
+
+    @RequestMapping("/homePatient")
     public ModelAndView home(){
         List<Patient> listPatient = patientService.listAll();
-        ModelAndView mav = new ModelAndView("displayPatient");
+        ModelAndView mav = new ModelAndView("/Patient/displayPatient");
         mav.addObject("listPatient", listPatient);
         return mav;
     }
@@ -30,7 +34,7 @@ public class PatientController {
     public String addNewPatient(Model model){
         Patient patient = new Patient();
         model.addAttribute("patient",patient);
-        return "addPatient";
+        return "/Patient/addPatient";
 
     }
 

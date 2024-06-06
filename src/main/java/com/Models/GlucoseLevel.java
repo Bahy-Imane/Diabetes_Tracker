@@ -12,7 +12,7 @@ public class GlucoseLevel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "g_id")
-    private Integer gId;
+    private Long gId;
 
     @Column(name = "date_time")
     private LocalDateTime dateTime;
@@ -27,18 +27,18 @@ public class GlucoseLevel {
     public GlucoseLevel() {
     }
 
-    public GlucoseLevel(Integer gId, LocalDateTime dateTime, Double glucoseLevel, Patient patient) {
+    public GlucoseLevel(Long gId, LocalDateTime dateTime, Double glucoseLevel, Patient patient) {
         this.gId = gId;
         this.dateTime = dateTime;
         this.glucoseLevel = glucoseLevel;
         this.patient = patient;
     }
 
-    public Integer getgId() {
+    public Long getgId() {
         return gId;
     }
 
-    public void setgId(Integer gId) {
+    public void setgId(Long gId) {
         this.gId = gId;
     }
 

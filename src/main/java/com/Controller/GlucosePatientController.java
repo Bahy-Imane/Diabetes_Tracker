@@ -3,6 +3,7 @@ package com.Controller;
 import com.Models.GlucoseLevel;
 import com.Models.Patient;
 import com.Services.GlucoseLevelService;
+import com.Services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,35 +22,39 @@ public class GlucosePatientController {
 
     @Autowired
     GlucoseLevelService glucoseLevelService;
+    PatientService patientService;
 
 
-    @RequestMapping("/")
+    @RequestMapping("/homeDiabetes")
     public ModelAndView home(){
         List<GlucoseLevel> listGlucoseLevel = glucoseLevelService.listAll();
-        ModelAndView mav = new ModelAndView("displayPatient");
+        ModelAndView mav = new ModelAndView("/GlucoseLevel/displayGlucoseLevel");
         mav.addObject("listGlucoseLevel", listGlucoseLevel);
         return mav;
     }
 
     @RequestMapping("/new1")
-    public String addNewGlucoseLevel(Model model){
+    public String addNewGlucoseLevel(@RequestParam ("patientId") Long patientId, Model model){
         GlucoseLevel glucoseLevel = new GlucoseLevel();
+        Patient patient = new Patient();
+        String pId = String.valueOf(patientService.getPatient(patientId));
         model.addAttribute("glucoseLevel",glucoseLevel);
-        return "addGlucoseLevel";
+        model.addAttribute("pId", pId);
+        return "/GlucoseLevel/addGlucoseLevel";
 
     }
 
-    @RequestMapping(value = "/addGlucoseLevelAction",method = RequestMethod.POST)
+    @RequestMapping(value = "/addGlucoseLevel",method = RequestMethod.POST)
     public String addGlucoseLevel(@ModelAttribute("glucoseLevel")GlucoseLevel glucoseLevel){
         glucoseLevelService.addGlucoseLevel(glucoseLevel);
-        return "redirect:/";
+        return "/GlucoseLevel/displayGlucoseLevel";
     }
 
 
 
     @RequestMapping("/deleteGlucose")
-    public String deleteGlucoseLevelForm(@RequestParam long gId) {
-        glucoseLevelService.deleteGlucoseLevel(gId);
-        return "redirect:/";
+    public String deleteGlucoseLevelForm(@RequestParam long ID) {
+        glucoseLevelService.deleteGlucoseLevel(ID);
+        return "/GlucoseLevel/displayGlucoseLevel";
     }
 }
