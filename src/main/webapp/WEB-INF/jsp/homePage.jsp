@@ -366,6 +366,7 @@
     </style>
 </head>
 <body>
+
 <nav class="navbar">
     <div>
     <div class="navbar-container">
@@ -375,7 +376,7 @@
         <div class="navbar-menu" id="navbarMenu">
             <a href="${pageContext.request.contextPath}" class="navbar-link">Accueil</a>
             <a href="${pageContext.request.contextPath}/about" class="navbar-link">A propos de nous</a>
-            <a href="${pageContext.request.contextPath}/homeDiabetes" class="navbar-link" id="signupLink">My account</a>
+            <a href="${pageContext.request.contextPath}/homePatient" class="navbar-link" id="signupLink">My account</a>
         </div>
     </div>
 </nav>
@@ -439,7 +440,7 @@
 </div>
 
 <div style="font-family:Dancing Script, cursive; font-optical-sizing: auto;;font-style: normal;margin-top: 30px;" class="centered-text">
-    <p>Best Regime</p>
+    <p>Best Diet</p>
 </div>
 
 

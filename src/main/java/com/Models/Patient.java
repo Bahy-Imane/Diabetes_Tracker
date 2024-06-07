@@ -28,19 +28,25 @@ public class Patient {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "pic")
+    private String picture;
+
     @OneToMany(mappedBy = "patient")
     private List<GlucoseLevel> glucoseLevels = new ArrayList<>();
+
 
     public Patient() {
     }
 
-    public Patient(Integer pId, String firstName, String lastName, String email, String phoneNumber, String address) {
+    public Patient(long pId, String firstName, String lastName, String email, String phoneNumber, String address, String picture, List<GlucoseLevel> glucoseLevels) {
         this.pId = pId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.address = address;
+        this.picture = picture;
+        this.glucoseLevels = glucoseLevels;
     }
 
     public long getpId() {
@@ -91,6 +97,22 @@ public class Patient {
         this.address = address;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public List<GlucoseLevel> getGlucoseLevels() {
+        return glucoseLevels;
+    }
+
+    public void setGlucoseLevels(List<GlucoseLevel> glucoseLevels) {
+        this.glucoseLevels = glucoseLevels;
+    }
+
     @Override
     public String toString() {
         return "Patient{" +
@@ -100,6 +122,8 @@ public class Patient {
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", address='" + address + '\'' +
+                ", picture='" + picture + '\'' +
+                ", glucoseLevels=" + glucoseLevels +
                 '}';
     }
 }

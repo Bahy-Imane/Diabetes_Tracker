@@ -31,6 +31,7 @@ public class PatientService {
     public Patient getPatient(Long pId) {
         return patientRepository.findById(pId).get();
     }
+
 }
 
 

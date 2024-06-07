@@ -9,7 +9,7 @@
 </head>
 <body>
 <h2>Add New Glucose Level</h2>
-<form action="/Diabetes_Tracker_war_exploded/addGlucoseLevel?patientId=${patient.pId}" method="post">
+<form action="/Diabetes_Tracker_war_exploded/addGlucoseLevel" method="post">
     <table>
         <tr>
             <td>Date and Time:</td>
@@ -20,9 +20,12 @@
             <td><input type="text" step="0.01" name="glucoseLevel" required/></td>
         </tr>
         <tr>
-            <td>
-                <input type="hidden" id="patientId" name="patientId" value="${patientId}">
-            </td>
+            <td><input type="hidden" name="patient.pId" value="${patient.pId}"></td>
+            <td><input type="hidden" name="patient.firstName" value="${patient.firstName}"></td>
+            <td><input type="hidden" name="patient.lastName" value="${patient.lastName}"></td>
+            <td><input type="hidden" name="patient.email" value="${patient.email}"></td>
+            <td><input type="hidden" name="patient.phoneNumber" value="${patient.phoneNumber}"></td>
+            <td><input type="hidden" name="patient.address" value="${patient.address}"></td>
         </tr>
         <tr>
             <td><input type="submit" value="Add Glucose Level"/></td>

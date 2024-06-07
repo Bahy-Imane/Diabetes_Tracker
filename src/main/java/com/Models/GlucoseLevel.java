@@ -1,4 +1,6 @@
 package com.Models;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -14,6 +16,7 @@ public class GlucoseLevel {
     @Column(name = "g_id")
     private Long gId;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     @Column(name = "date_time")
     private LocalDateTime dateTime;
 
