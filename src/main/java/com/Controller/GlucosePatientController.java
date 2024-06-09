@@ -53,4 +53,13 @@ public class GlucosePatientController {
         return "redirect:/homeDiabetes/" + pId;
     }
 
+
+    @GetMapping("/glucose-chart/{patientId}")
+    public String showGlucoseChart(@PathVariable Long patientId, Model model) {
+        Patient patient = patientService.getPatient(patientId);
+        model.addAttribute("patient", patient);
+        List<GlucoseLevel> glucoseLevel = glucoseLevelService.listAll();
+        model.addAttribute("glucoseLevel", glucoseLevel);
+        return "/GlucoseLevel/Chart";
+    }
 }
